@@ -1,0 +1,20 @@
+{
+  "name": "assigner",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "joel.nascimento",
+  "license": "ISC",
+  "dependencies": {
+    "dgrid": "^1.2.1",
+    "dojo": "^1.13.0",
+    "dojo-dstore": "^1.1.2",
+    "http-server": "^0.11.1",
+    "sqlite3": "^4.0.2",
+    "ws": "^6.0.0"
+  }
+}

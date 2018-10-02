@@ -1,0 +1,157 @@
+body {
+    font-family: "Lato", sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.sidebar {
+    height: 100%;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: rgb(60, 56, 54);
+    overflow-x: hidden;
+    padding-top: 20px;
+    width: 15%;
+}
+
+.sidebar a {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #ffffff;
+    display: block;
+    text-align: center;
+}
+
+.sidebar a:hover {
+    background-color: rgb(84, 76, 99);
+}
+
+.sidebar a.active {
+    background-color: #ccc;
+}
+
+.menuContent {
+    height: 100%;
+    /* Same as the width of the sidenav */
+    font-size: 28px;
+    /* Increased text to enable scrolling */
+    padding: 0px 10px;
+    margin-left: 15%;
+}
+
+/* Full-width input fields */
+
+input[type=text],
+input[type=password] {
+    width: 100%;
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    display: inline-block;
+    border: none;
+    background: #f1f1f1;
+}
+
+input[type=text]:focus,
+input[type=password]:focus {
+    background-color: #ddd;
+    outline: none;
+}
+
+hr {
+    border: 1px solid #f1f1f1;
+    margin-bottom: 25px;
+}
+
+/* Set a style for all buttons */
+
+button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 50%;
+    opacity: 0.9;
+}
+
+button:hover {
+    opacity: 1;
+}
+
+/* Extra styles for the cancel button */
+
+.cancelbtn {
+    padding: 14px 20px;
+    background-color: #f44336;
+}
+
+/* Float cancel and signup buttons and add an equal width */
+
+.cancelbtn,
+.savebtn {
+    float: left;
+    width: 50%;
+}
+
+/* Add padding to container elements */
+
+.container {
+    padding: 16px;
+}
+
+/* Clear floats */
+
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+input[type="date"] {
+    color: #ffffff;
+    position: relative;
+    font-family: Arial;
+    font-size: 15px;
+    padding: 8px 16px;
+    background-color: DodgerBlue;
+    border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
+}
+
+/* Change styles for cancel button and signup button on extra small screens */
+
+@media screen and (max-width: 450px) {
+    .sidebar {
+        padding-top: 15px;
+    }
+    .sidebar a {
+        font-size: 18px;
+    }
+}
+
+@media screen and (max-width: 300px) {
+    .cancelbtn,
+    .savebtn {
+        width: 100%;
+    }
+}
+
+.assignments {
+    -webkit-column-count: 2; /* Chrome, Safari, Opera */
+    -moz-column-count: 2; /* Firefox */
+    column-count: 2;
+    -webkit-column-width: 100px; /* Chrome, Safari, Opera */
+    -moz-column-width: 100px; /* Firefox */
+    column-width: 100px;
+}

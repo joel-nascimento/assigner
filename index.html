@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="./style.css" />
+    <link rel="stylesheet" type="text/css" href="./checkbox.css" />
+    <link rel="stylesheet" type="text/css" href="./select.css" />
+    <link rel="stylesheet" type="text/css" href="./node_modules/dgrid/css/dgrid.css" />
+    <link rel="stylesheet" type="text/css" href="./adgrid.css" />
+</head>
+
+<body>
+    <div class="sidebar">
+        <a class="menuLink" name="home">
+            <img src="./home.png" s>
+        </a>
+        <a class="menuLink" name="meetings">
+            <img src="./conference.png" s>
+        </a>
+        <a class="menuLink" name="addMeeting">
+            <img src="./conference_plus.png" s>
+        </a>
+        <a class="menuLink" name="people">
+            <img src="./avatar.png" s>
+        </a>
+        <a class="menuLink" name="addPerson">
+            <img src="./avatar_plus.png" s>
+        </a>
+    </div>
+    <div class="menuContent" id="home" style="display: block;">
+        <h2>Informações congregacionais</h2>
+        <br>
+        <label for="lName">
+            <b>Nome</b>
+        </label>
+        <input type="text" placeholder="Entre o nome" id="congNome">
+        <button type="button" class="cancelbtn" value="Cancelar" id="cancelCongBtn" style="vertical-align: bottom">Cancelar</button>
+        <button type="button" class="savebtn" value="Salvar" id="saveCongBtn" style="vertical-align: bottom">Salvar</button>
+    </div>
+    <div class="menuContent" id="meetings" style="display: none;">
+    </div>
+    <div class="menuContent" id="addMeeting" style="display: none;">
+        <h2>Reuniões</h2>
+        <br>
+        <div style="width:300px;">
+            <input type="date" style="width: 300px"></input>
+        </div>
+        <br>
+        <div class="assignments">
+            <div class="custom-select" style="width:300px;">
+                <select>
+                    <option value="0">Selecione Indicador</option>
+                </select>
+            </div>
+            <br>
+            <div class="custom-select" style="width:300px;">
+                <select>
+                    <option value="0">Selecione Indicador</option>
+                </select>
+            </div>
+            <br>
+            <div class="custom-select" style="width:300px;">
+                <select>
+                    <option value="0">Selecione Volante</option>
+                </select>
+            </div>
+            <br>
+            <div class="custom-select" style="width:300px;">
+                <select>
+                    <option value="0">Selecione Volante</option>
+                </select>
+            </div>
+            <br>
+            <div class="custom-select" style="width:300px;">
+                <select>
+                    <option value="0">Selecione Leitor "Estudo Bíblico"</option>
+                </select>
+            </div>
+            <br>
+            <div class="custom-select" style="width:300px;">
+                <select>
+                    <option value="0">Selecione Leitor "A Sentinela"</option>
+                </select>
+            </div>
+            <br>
+            <div class="custom-select" style="width:300px;">
+                <select>
+                    <option value="0">Selecione Palco</option>
+                </select>
+            </div>
+            <br>
+            <div class="custom-select" style="width:300px;">
+                <select>
+                    <option value="0">Selecione Som</option>
+                </select>
+            </div>
+            <br>
+            <div class="custom-select" style="width:300px;">
+                <select>
+                    <option value="0">Selecione Leitor da Bíblia</option>
+                </select>
+            </div>
+            <br>
+            <div class="custom-select" style="width:300px;">
+                <select>
+                    <option value="0">Selecione Conversa 1</option>
+                </select>
+            </div>
+            <br>
+            <div class="custom-select" style="width:300px;">
+                <select>
+                    <option value="0">Selecione Conversa 1 Assistente</option>
+                </select>
+            </div>
+            <br>
+            <div class="custom-select" style="width:300px;">
+                <select>
+                    <option value="0">Selecione Conversa 2</option>
+                </select>
+            </div>
+            <br>
+            <div class="custom-select" style="width:300px;">
+                <select>
+                    <option value="0">Selecione Conversa 2 Assistente</option>
+                </select>
+            </div>
+            <br>
+            <div class="custom-select" style="width:300px;">
+                <select>
+                    <option value="0">Selecione Estudo Bíblico</option>
+                </select>
+            </div>
+            <br>
+            <div class="custom-select" style="width:300px;">
+                <select>
+                    <option value="0">Selecione Estudo Bíblico Assistente</option>
+                </select>
+            </div>
+            <br>
+            <div class="custom-select" style="width:300px;">
+                <select>
+                    <option value="0">Selecione Discurso</option>
+                </select>
+            </div>
+        </div>
+        <br>
+        <button type="button" class="cancelbtn" value="Cancelar" style="vertical-align: bottom">Cancelar</button>
+        <button type="button" class="savebtn" value="Salvar" id="saveMeetingBtn" style="vertical-align: bottom">Salvar</button>
+    </div>
+    <div class="menuContent" id="people" style="display: none;">
+        <div id="grid" class="grid"></div>
+    </div>
+    <div class="menuContent" id="addPerson" style="display: none;">
+        <h2>Informações pessoais</h2>
+        <br>
+        <label for="lName">
+            <b>Nome</b>
+        </label>
+        <input type="text" placeholder="Entre o nome" name="nome">
+        <label for="lLastname">
+            <b>Sobrenome</b>
+        </label>
+        <input type="text" placeholder="Entre o sobrenome" name="sobrenome">
+        <br>
+        <h2>Privilégios</h2>
+        <br>
+        <div class="assignments">
+            <label class="checkboxContainer">Indicador
+                <input type="checkbox" name="indicador">
+                <span class="checkmark"></span>
+            </label>
+            <label class="checkboxContainer">Volante
+                <input type="checkbox" name="volante">
+                <span class="checkmark"></span>
+            </label>
+            <label class="checkboxContainer">Leitor "Estudo Bíblico"
+                <input type="checkbox" name="leitorE">
+                <span class="checkmark"></span>
+            </label>
+            <label class="checkboxContainer">Leitor "A Sentinela"
+                <input type="checkbox" name="leitorA">
+                <span class="checkmark"></span>
+            </label>
+            <label class="checkboxContainer">Palco
+                <input type="checkbox" name="palco">
+                <span class="checkmark"></span>
+            </label>
+            <label class="checkboxContainer">Som
+                <input type="checkbox" name="som">
+                <span class="checkmark"></span>
+            </label>
+            <label class="checkboxContainer">Leitor da Bíblia
+                <input type="checkbox" name="leitorB">
+                <span class="checkmark"></span>
+            </label>
+            <label class="checkboxContainer">Conversa
+                <input type="checkbox" name="conversa">
+                <span class="checkmark"></span>
+            </label>
+            <label class="checkboxContainer">Conversa Assitente
+                <input type="checkbox" name="conversaA">
+                <span class="checkmark"></span>
+            </label>
+            <label class="checkboxContainer">Estudo Bíblico
+                <input type="checkbox" name="estudoBiblico">
+                <span class="checkmark"></span>
+            </label>
+            <label class="checkboxContainer">Estudo Bíblico Assistente
+                <input type="checkbox" name="estudoBiblicoA">
+                <span class="checkmark"></span>
+            </label>
+            <label class="checkboxContainer">Discurso
+                <input type="checkbox" name="discurso">
+                <span class="checkmark"></span>
+            </label>
+        </div>
+        <br>
+        <button type="button" class="cancelbtn" value="Cancelar" style="vertical-align: bottom">Cancelar</button>
+        <button type="button" class="savebtn" value="Salvar" id="savePersonBtn" style="vertical-align: bottom">Salvar</button>
+    </div>
+
+    <script src="./node_modules/dojo/dojo.js" data-dojo-config="async: false"></script>
+    <script type="text/javascript" src="./agrid.js"></script>
+    <script type="text/javascript" src="./customSelect.js"></script>
+    <script type="text/javascript" src="./menuManager.js"></script>
+    <script type="text/javascript" src="./congregation.js"></script>
+    <script type="text/javascript" src="./assignment.js"></script>
+    <script type="text/javascript" src="./wsclient.js"></script>
+    <script type="text/javascript" src="./people.js"></script>
+    <script type="text/javascript" src="./assigner.js"></script>
+</body>
