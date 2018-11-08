@@ -16,6 +16,7 @@ class Assigner {
     init(congregationName) {
         this._people = new People(this._wsClient);
         this._people.init(congregationName);
+        this._meetings = new Meetings(this._wsClient, this._people);
     }
     onConnect() {
         var createInfo = {
@@ -50,7 +51,7 @@ class Assigner {
             {
                 if(m.table == 'pessoas')
                 {
-                    this._people.populateGrid(m.data);
+                    this._people.receiveAll(m.data);
                 }
             }
         }

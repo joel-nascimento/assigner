@@ -21,7 +21,7 @@ body {
     background-color: rgb(60, 56, 54);
     overflow-x: hidden;
     padding-top: 20px;
-    width: 15%;
+    width: 8%;
 }
 
 .sidebar a {
@@ -47,7 +47,7 @@ body {
     font-size: 28px;
     /* Increased text to enable scrolling */
     padding: 0px 10px;
-    margin-left: 15%;
+    margin-left: 8%;
 }
 
 /* Full-width input fields */

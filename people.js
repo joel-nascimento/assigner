@@ -3,107 +3,107 @@ class People {
         this._table = 'pessoas';
         this._columns = [{
                 column: 'nome',
-                type: 'varchar(255)'
+                type: 'text'
             },
             {
                 column: 'sobrenome',
-                type: 'varchar(255)'
+                type: 'text'
             },
             {
                 column: 'indicador',
-                type: 'bit'
+                type: 'INT'
             },
             {
                 column: 'dtIndicador',
-                type: 'date'
+                type: 'text'
             },
             {
                 column: 'volante',
-                type: 'bit'
+                type: 'INT'
             },
             {
                 column: 'dtVolante',
-                type: 'date'
+                type: 'text'
             },
             {
                 column: 'som',
-                type: 'bit'
+                type: 'INT'
             },
             {
                 column: 'dtSom',
-                type: 'date'
+                type: 'text'
             },
             {
                 column: 'palco',
-                type: 'bit'
+                type: 'INT'
             },
             {
                 column: 'dtPalco',
-                type: 'date'
+                type: 'text'
             },
             {
                 column: 'leitorA',
-                type: 'bit'
+                type: 'INT'
             },
             {
                 column: 'dtLeitorA',
-                type: 'date'
+                type: 'text'
             },
             {
                 column: 'leitorE',
-                type: 'bit'
+                type: 'INT'
             },
             {
                 column: 'dtLeitorE',
-                type: 'date'
+                type: 'text'
             },
             {
                 column: 'leitorB',
-                type: 'bit'
+                type: 'INT'
             },
             {
                 column: 'dtLeitorB',
-                type: 'date'
+                type: 'text'
             },
             {
                 column: 'conversa',
-                type: 'bit'
+                type: 'INT'
             },
             {
                 column: 'dtConversa',
-                type: 'date'
+                type: 'text'
             },
             {
                 column: 'conversaA',
-                type: 'bit'
+                type: 'INT'
             },
             {
                 column: 'dtConversaA',
-                type: 'date'
+                type: 'text'
             },
             {
                 column: 'estudoBiblico',
-                type: 'bit'
+                type: 'INT'
             },
             {
                 column: 'dtEstudoBiblico',
-                type: 'date'
+                type: 'text'
             },
             {
                 column: 'estudoBiblicoA',
-                type: 'bit'
+                type: 'INT'
             },
             {
                 column: 'dtEstudoBiblicoA',
-                type: 'date'
+                type: 'text'
             },
             {
                 column: 'discurso',
-                type: 'bit'
+                type: 'INT'
             },
             {
                 column: 'dtDiscurso',
-                type: 'date'
+                type: 'text'
             },
         ];
 
@@ -116,18 +116,17 @@ class People {
         };
 
         // Create an observer instance linked to the callback function
-        var observer = new MutationObserver(() => {
-            console.log("on change");
+        var observer = new MutationObserver((mutationsList) => {
+            var attrClass = mutationsList[0].target.getAttribute("class");
+            if (attrClass == "menuLink active") {
+                this.getAll();
+            }
         });
 
         // Start observing the target node for configured mutations
         observer.observe(document.getElementsByName('people')[0], config);
 
-        document.getElementsByName('people')[0].onchange = () => {
-            console.log("on change");
-        };
-
-        var gridColumns = this._columns.filter(item => item.type != 'date').map(item => "\"" + item.column + "\": \"" + item.column + "\"").join(', ');
+        var gridColumns = this._columns.filter(item => item.column[0] != 'd' && item.column[1] != 't').map(item => "\"" + item.column + "\": \"" + item.column + "\"").join(', ');
         gridColumns = "{" + gridColumns + "}";
         this._grid = new AGrid(dojo.require('dojo/_base/declare'),
             dojo.require('dgrid/Grid'),
@@ -147,8 +146,6 @@ class People {
 
         if (this._wsClient)
             this._wsClient.sendToServer(createTable);
-
-        this.getAll();
     }
     save() {
         console.log('saving person');
@@ -167,35 +164,35 @@ class People {
             estudoBiblicoA = document.getElementsByName('estudoBiblicoA')[0].checked,
             discurso = document.getElementsByName('discurso')[0].checked;
 
-        var utc = new Date().toJSON().slice(0, 10); //.replace(/-/g,'/');
+        var utc = new Date().toDateString();
 
         var valuesA = [];
         valuesA.push('\"' + nome + '\"');
         valuesA.push('\"' + sobrenome + '\"');
         valuesA.push(indicador);
-        valuesA.push(utc);
+        valuesA.push('\"' + utc + '\"');
         valuesA.push(volante);
-        valuesA.push(utc);
+        valuesA.push('\"' + utc + '\"');
         valuesA.push(som);
-        valuesA.push(utc);
+        valuesA.push('\"' + utc + '\"');
         valuesA.push(palco);
-        valuesA.push(utc);
+        valuesA.push('\"' + utc + '\"');
         valuesA.push(leitorA);
-        valuesA.push(utc);
+        valuesA.push('\"' + utc + '\"');
         valuesA.push(leitorE);
-        valuesA.push(utc);
+        valuesA.push('\"' + utc + '\"');
         valuesA.push(leitorB);
-        valuesA.push(utc);
+        valuesA.push('\"' + utc + '\"');
         valuesA.push(conversa);
-        valuesA.push(utc);
+        valuesA.push('\"' + utc + '\"');
         valuesA.push(conversaA);
-        valuesA.push(utc);
+        valuesA.push('\"' + utc + '\"');
         valuesA.push(estudoBiblico);
-        valuesA.push(utc);
+        valuesA.push('\"' + utc + '\"');
         valuesA.push(estudoBiblicoA);
-        valuesA.push(utc);
+        valuesA.push('\"' + utc + '\"');
         valuesA.push(discurso);
-        valuesA.push(utc);
+        valuesA.push('\"' + utc + '\"');
 
         var insertPersonColumns = this._columns.map(item => item.column).join(', ');
         var insertPersonValues = valuesA.map(item => item).join(', ');
@@ -209,6 +206,23 @@ class People {
         }
         if (this._wsClient)
             this._wsClient.sendToServer(insert);
+
+        document.getElementsByName('nome')[0].value = "";
+        document.getElementsByName('sobrenome')[0].value = "";
+        document.getElementsByName('indicador')[0].checked = false;
+        document.getElementsByName('volante')[0].checked = false;
+        document.getElementsByName('leitorE')[0].checked = false;
+        document.getElementsByName('leitorA')[0].checked = false;
+        document.getElementsByName('palco')[0].checked = false;
+        document.getElementsByName('som')[0].checked = false;
+        document.getElementsByName('leitorB')[0].checked = false;
+        document.getElementsByName('conversa')[0].checked = false;
+        document.getElementsByName('conversaA')[0].checked = false;
+        document.getElementsByName('estudoBiblico')[0].checked = false;
+        document.getElementsByName('estudoBiblicoA')[0].checked = false;
+        document.getElementsByName('discurso')[0].checked = false;
+
+        this.getAll();
     }
     getAll() {
         var columns = this._columns.map(item => item.column).join(', ');
@@ -223,14 +237,32 @@ class People {
         if (this._wsClient)
             this._wsClient.sendToServer(select);
     }
-    populateGrid(data) {
-        if (this._grid) {
-            var rows = [];
-            data.forEach(element => {
-                rows.push(JSON.parse("{" + this._columns.filter(item => item.type != 'date').map(item => "\"" + item.column + "\":" + "\"" + element[item.column] + "\"").join(', ') + "}"));
-            });
-
-            this._grid.render(rows);
+    receiveAll(data) {
+        if (this._rows != data) {
+            this._rows = data;
+            this.populateGrid();
         }
+    }
+    rows() {
+        return this._rows;
+    }
+    populateGrid() {
+        if (this._grid && this._rows) {
+            var toRender = [];
+            this._rows.forEach(element => {
+                toRender.push(JSON.parse("{" + this._columns.filter(item => item.column[0] != 'd' && item.column[1] != 't').map(item => "\"" + item.column + "\":" + "\"" + element[item.column] + "\"").join(', ') + "}"));
+            });
+            this._grid.render(toRender);
+        }
+    }
+    getAllSorted(columnToSort) {
+        if (!this._rows || this._rows.length == 0)
+            return [];
+
+        var sorted = this._rows;
+        sorted.sort(function (a, b) {
+            return Date(a[columnToSort]).getTime() - Date(b[columnToSort]).getTime()
+        });
+        return sorted;
     }
 }
