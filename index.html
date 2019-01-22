@@ -40,107 +40,94 @@
     </div>
     <div class="menuContent" id="addMeeting" style="display: none;">
         <h2>Reuniões</h2>
-        <br>
-        <div style="width:300px;">
-            <input type="date" style="width: 300px" id="riData">
+        <div style="width:250px;">
+            <input type="date" style="width: 250px" id="riData">
         </div>
         <br>
-        <div class="assignments">
-            <div class="custom-select" style="width:300px;">
-                <select id="riIndicador1">
-                    <option value="0">Selecione Indicador</option>
+        <div class="assignments" style="font-size: 20px">
+            <label>Indicadores</label>
+            <fieldset>
+                <select id="riIndicador1" style="width:250px;">
                 </select>
-            </div>
+                <br>
+                <select id="riIndicador2" style="width:250px;">
+                </select>
+            </fieldset>
             <br>
-            <div class="custom-select" style="width:300px;">
-                <select id="riIndicador2">
-                    <option value="0">Selecione Indicador</option>
+            <label>Volantes</label>
+            <fieldset>
+                <select id="riVolante1" style="width:250px;">
                 </select>
-            </div>
+                <br>
+                <select id="riVolante2" style="width:250px;">
+                </select>
+            </fieldset>
             <br>
-            <div class="custom-select" style="width:300px;">
-                <select id="riVolante1">
-                    <option value="0">Selecione Volante</option>
+            <label>Leitor "Estudo Bíblico"</label>
+            <fieldset>
+                <select id="riLeitorEB" style="width:250px;">
                 </select>
-            </div>
+            </fieldset>
             <br>
-            <div class="custom-select" style="width:300px;">
-                <select id="riVolante2">
-                    <option value="0">Selecione Volante</option>
+            <label>Leitor "A Sentinela"</label>
+            <fieldset>
+                <select id="riLeitorA" style="width:250px;">
                 </select>
-            </div>
+            </fieldset>
             <br>
-            <div class="custom-select" style="width:300px;">
-                <select id="riLeitorEB">
-                    <option value="0">Selecione Leitor "Estudo Bíblico"</option>
+            <label>Palco</label>
+            <fieldset>
+                <select id="riPalco" style="width:250px;">
                 </select>
-            </div>
+            </fieldset>
             <br>
-            <div class="custom-select" style="width:300px;">
-                <select id="riLeitorA">
-                    <option value="0">Selecione Leitor "A Sentinela"</option>
+            <label>Som</label>
+            <fieldset>
+                <select id="riSom" style="width:250px;">
                 </select>
-            </div>
+            </fieldset>
             <br>
-            <div class="custom-select" style="width:300px;">
-                <select id="riPalco">
-                    <option value="0">Selecione Palco</option>
-                </select>
-            </div>
-            <br>
-            <div class="custom-select" style="width:300px;">
-                <select id="riSom">
-                    <option value="0">Selecione Som</option>
-                </select>
-            </div>
-            <br>
-            <div class="custom-select" style="width:300px;">
-                <select id="riLeitorB">
-                    <option value="0">Selecione Leitor da Bíblia</option>
-                </select>
-            </div>
-            <br>
-            <div class="custom-select" style="width:300px;">
-                <select id="riConversa1">
-                    <option value="0">Selecione Conversa 1</option>
-                </select>
-            </div>
-            <br>
-            <div class="custom-select" style="width:300px;">
-                <select id="riConversa1A">
-                    <option value="0">Selecione Conversa 1 Assistente</option>
-                </select>
-            </div>
-            <br>
-            <div class="custom-select" style="width:300px;">
-                <select id="riConversa2">
-                    <option value="0">Selecione Conversa 2</option>
-                </select>
-            </div>
-            <br>
-            <div class="custom-select" style="width:300px;">
-                <select id="riConversa2A">
-                    <option value="0">Selecione Conversa 2 Assistente</option>
-                </select>
-            </div>
-            <br>
-            <div class="custom-select" style="width:300px;">
-                <select id="riEstudoB">
-                    <option value="0">Selecione Estudo Bíblico</option>
-                </select>
-            </div>
-            <br>
-            <div class="custom-select" style="width:300px;">
-                <select id="riEstudoBA">
-                    <option value="0">Selecione Estudo Bíblico Assistente</option>
-                </select>
-            </div>
-            <br>
-            <div class="custom-select" style="width:300px;">
-                <select id="riDiscurso">
-                    <option value="0">Selecione Discurso</option>
-                </select>
-            </div>
+            <label>Escola do Ministério Teocrático</label>
+            <fieldset>
+                <label>Leitor da Bíblia</label>
+                <fieldset>
+                    <select id="riLeitorB" style="width:250px;">
+                    </select>
+                </fieldset>
+                <br>
+                <label>Primeira Conversa</label>
+                <fieldset>
+                    <select id="riConversa1" style="width:250px;">
+                    </select>
+                    <br>
+                    <select id="riConversa1A" style="width:250px;">
+                    </select>
+                </fieldset>
+                <br>
+                <label>Segunda Conversa</label>
+                <fieldset>
+                    <select id="riConversa2" style="width:250px;">
+                    </select>
+                    <br>
+                    <select id="riConversa2A" style="width:250px;">
+                    </select>
+                </fieldset>
+                <br>
+                <label>Estudo Bíblico</label>
+                <fieldset>
+                    <select id="riEstudoB" style="width:250px;">
+                    </select>
+                    <br>
+                    <select id="riEstudoBA" style="width:250px;">
+                    </select>
+                </fieldset>
+                <br>
+                <label>Discurso</label>
+                <fieldset>
+                    <select id="riDiscurso" style="width:250px;">
+                    </select>
+                </fieldset>
+            </fieldset>
         </div>
         <br>
         <button type="button" class="cancelbtn" value="Cancelar" style="vertical-align: bottom">Cancelar</button>
@@ -156,10 +143,6 @@
             <b>Nome</b>
         </label>
         <input type="text" placeholder="Entre o nome" name="nome">
-        <label for="lLastname">
-            <b>Sobrenome</b>
-        </label>
-        <input type="text" placeholder="Entre o sobrenome" name="sobrenome">
         <br>
         <h2>Privilégios</h2>
         <br>
@@ -204,7 +187,7 @@
                 <input type="checkbox" name="estudoBiblico">
                 <span class="checkmark"></span>
             </label>
-            <label class="checkboxContainer">Estudo Bíblico Assistente
+            <label class="checkboxContainer">Estudo Bíblico Ajudante
                 <input type="checkbox" name="estudoBiblicoA">
                 <span class="checkmark"></span>
             </label>

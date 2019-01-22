@@ -73,7 +73,7 @@ class Meetings {
 
         this._wsClient = wsClient;
         this._people = people;
-
+        this._busy = [];
         // Create an observer instance linked to the callback function
         var observer = new MutationObserver((mutationsList) => {
             var attrClass = mutationsList[0].target.getAttribute("class");
@@ -89,36 +89,55 @@ class Meetings {
         observer.observe(document.getElementsByName('addMeeting')[0], config);
     }
     init() {
-        this.fillCombo('dtIndicador', 'riIndicador1');
-        this.fillCombo('dtIndicador', 'riIndicador2');
-        this.fillCombo('dtVolante', 'riVolante1');
-        this.fillCombo('dtVolante', 'riVolante2');
-        this.fillCombo('dtLeitorE', 'riLeitorEB');
-        this.fillCombo('dtLeitorA', 'riLeitorA');
-        this.fillCombo('dtPalco', 'riPalco');
-        this.fillCombo('dtSom', 'riSom');
-        this.fillCombo('dtLeitorB', 'riLeitorB');
-        this.fillCombo('dtConversa', 'riConversa1');
-        this.fillCombo('dtConversaA', 'riConversa1A');
-        this.fillCombo('dtConversa', 'riConversa2');
-        this.fillCombo('dtConversaA', 'riConversa2A');
-        this.fillCombo('dtEstudoBiblico', 'riEstudoB');
-        this.fillCombo('dtEstudoBiblicoA', 'riEstudoBA');
-        this.fillCombo('dtDiscurso', 'riDiscurso');
+        this.fillCombo('Indicador', 'dtIndicador', 'riIndicador1');
+        this.fillCombo('Indicador', 'dtIndicador', 'riIndicador2');
+        this.fillCombo('Volante', 'dtVolante', 'riVolante1');
+        this.fillCombo('Volante', 'dtVolante', 'riVolante2');
+        this.fillCombo('Leitor_Estudo_Bíblico', 'dtLeitorE', 'riLeitorEB');
+        this.fillCombo('Leitor_A_Sentinela', 'dtLeitorA', 'riLeitorA');
+        this.fillCombo('Palco', 'dtPalco', 'riPalco');
+        this.fillCombo('Som', 'dtSom', 'riSom');
+        this.fillCombo('Leitor_Bíblia', 'dtLeitorB', 'riLeitorB');
+        this.fillCombo('Conversa', 'dtConversa', 'riConversa1');
+        this.fillCombo('Conversa_Ajudante', 'dtConversaA', 'riConversa1A');
+        this.fillCombo('Conversa', 'dtConversa', 'riConversa2');
+        this.fillCombo('Conversa_Ajudante', 'dtConversaA', 'riConversa2A');
+        this.fillCombo('Estudo_Bíblico', 'dtEstudoBiblico', 'riEstudoB');
+        this.fillCombo('Estudo_Bíblico_Ajudante', 'dtEstudoBiblicoA', 'riEstudoBA');
+        this.fillCombo('Discurso', 'dtDiscurso', 'riDiscurso');
     }
-    fillCombo(sortColumn, comboId) {
+    fillCombo(column, sortColumn, comboId) {
         var node = document.getElementById(comboId);
         this.removeOptions(node);
-        var sorted = this._people.getAllSorted(sortColumn);
+        var value = 0;
+        var sorted = this._people.getAllSorted(column, sortColumn);
+        var busy = this._busy;
+        var firstNotBusy = true;
         sorted.forEach(el => {
-            this.addOption(node, el['nome'] + ' ' + el['sobrenome']);
+            var found = this._busy.find(b => {
+                return b == el['Nome'];
+            });
+            if (found)
+                return;
+            if(firstNotBusy)
+            {
+                this._busy.push(el['Nome']);
+                firstNotBusy = false;
+            }
+            this.addOption(node, el['Nome'], value++, false);
         });
-        this.addOption(node, '');
+        busy.forEach(el => {
+            this.addOption(node, el, value++, true);
+        })
+        this.addOption(node, 'N/A', value++, false);
     }
-    addOption(selectNode, textOption) {
+    addOption(selectNode, textOption, value, busy) {
         var option = document.createElement("option");
         option.text = textOption;
-        selectNode.add(option);
+        option.value = value;
+        if(busy)
+            option.style += 'color:red';
+        selectNode.appendChild(option);
     }
     removeOptions(selectNode) {
         while (selectNode.firstChild) {
@@ -126,6 +145,6 @@ class Meetings {
         }
     }
     save() {
-
+        this._busy = [];
     }
 }

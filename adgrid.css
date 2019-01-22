@@ -1,3 +1,13 @@
-.dgrid-scroller {
-    margin-top: 40px;
+.dgrid-header {
+    font-size: 15px;
+}
+.dgrid-cell {
+    text-align: center;
+    width: auto;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.dgrid-scroller .dgrid-cell {
+    font-size: 12px;
 }

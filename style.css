@@ -140,7 +140,7 @@ input[type="date"] {
     }
 }
 
-@media screen and (max-width: 300px) {
+@media screen and (max-width: 250px) {
     .cancelbtn,
     .savebtn {
         width: 100%;
@@ -154,4 +154,5 @@ input[type="date"] {
     -webkit-column-width: 100px; /* Chrome, Safari, Opera */
     -moz-column-width: 100px; /* Firefox */
     column-width: 100px;
+    /* column-fill: auto; */
 }

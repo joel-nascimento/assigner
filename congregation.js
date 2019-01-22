@@ -37,5 +37,6 @@ class Congregation {
         }
         if(this._wsClient)
             this._wsClient.sendToServer(insertName);
+        document.location.reload();
     }
 }

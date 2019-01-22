@@ -2,15 +2,11 @@ class People {
     constructor(wsClient) {
         this._table = 'pessoas';
         this._columns = [{
-                column: 'nome',
-                type: 'text'
+                column: 'Nome',
+                type: 'text PRIMARY KEY'
             },
             {
-                column: 'sobrenome',
-                type: 'text'
-            },
-            {
-                column: 'indicador',
+                column: 'Indicador',
                 type: 'INT'
             },
             {
@@ -18,7 +14,7 @@ class People {
                 type: 'text'
             },
             {
-                column: 'volante',
+                column: 'Volante',
                 type: 'INT'
             },
             {
@@ -26,7 +22,7 @@ class People {
                 type: 'text'
             },
             {
-                column: 'som',
+                column: 'Som',
                 type: 'INT'
             },
             {
@@ -34,7 +30,7 @@ class People {
                 type: 'text'
             },
             {
-                column: 'palco',
+                column: 'Palco',
                 type: 'INT'
             },
             {
@@ -42,7 +38,7 @@ class People {
                 type: 'text'
             },
             {
-                column: 'leitorA',
+                column: 'Leitor_A_Sentinela',
                 type: 'INT'
             },
             {
@@ -50,7 +46,7 @@ class People {
                 type: 'text'
             },
             {
-                column: 'leitorE',
+                column: 'Leitor_Estudo_Bíblico',
                 type: 'INT'
             },
             {
@@ -58,7 +54,7 @@ class People {
                 type: 'text'
             },
             {
-                column: 'leitorB',
+                column: 'Leitor_Bíblia',
                 type: 'INT'
             },
             {
@@ -66,7 +62,7 @@ class People {
                 type: 'text'
             },
             {
-                column: 'conversa',
+                column: 'Conversa',
                 type: 'INT'
             },
             {
@@ -74,7 +70,7 @@ class People {
                 type: 'text'
             },
             {
-                column: 'conversaA',
+                column: 'Conversa_Ajudante',
                 type: 'INT'
             },
             {
@@ -82,7 +78,7 @@ class People {
                 type: 'text'
             },
             {
-                column: 'estudoBiblico',
+                column: 'Estudo_Bíblico',
                 type: 'INT'
             },
             {
@@ -90,7 +86,7 @@ class People {
                 type: 'text'
             },
             {
-                column: 'estudoBiblicoA',
+                column: 'Estudo_Bíblico_Ajudante',
                 type: 'INT'
             },
             {
@@ -98,7 +94,7 @@ class People {
                 type: 'text'
             },
             {
-                column: 'discurso',
+                column: 'Discurso',
                 type: 'INT'
             },
             {
@@ -126,7 +122,7 @@ class People {
         // Start observing the target node for configured mutations
         observer.observe(document.getElementsByName('people')[0], config);
 
-        var gridColumns = this._columns.filter(item => item.column[0] != 'd' && item.column[1] != 't').map(item => "\"" + item.column + "\": \"" + item.column + "\"").join(', ');
+        var gridColumns = this._columns.filter(item => item.column[0] != 'd' && item.column[1] != 't').map(item => "\"" + item.column + "\": \"" + item.column.replace(new RegExp('_', 'g'), ' ') + "\"").join(', ');
         gridColumns = "{" + gridColumns + "}";
         this._grid = new AGrid(dojo.require('dojo/_base/declare'),
             dojo.require('dgrid/Grid'),
@@ -150,7 +146,6 @@ class People {
     save() {
         console.log('saving person');
         var nome = document.getElementsByName('nome')[0].value,
-            sobrenome = document.getElementsByName('sobrenome')[0].value,
             indicador = document.getElementsByName('indicador')[0].checked,
             volante = document.getElementsByName('volante')[0].checked,
             leitorE = document.getElementsByName('leitorE')[0].checked,
@@ -168,7 +163,6 @@ class People {
 
         var valuesA = [];
         valuesA.push('\"' + nome + '\"');
-        valuesA.push('\"' + sobrenome + '\"');
         valuesA.push(indicador);
         valuesA.push('\"' + utc + '\"');
         valuesA.push(volante);
@@ -208,7 +202,6 @@ class People {
             this._wsClient.sendToServer(insert);
 
         document.getElementsByName('nome')[0].value = "";
-        document.getElementsByName('sobrenome')[0].value = "";
         document.getElementsByName('indicador')[0].checked = false;
         document.getElementsByName('volante')[0].checked = false;
         document.getElementsByName('leitorE')[0].checked = false;
@@ -255,13 +248,13 @@ class People {
             this._grid.render(toRender);
         }
     }
-    getAllSorted(columnToSort) {
+    getAllSorted(column, columnToSort) {
         if (!this._rows || this._rows.length == 0)
             return [];
-
-        var sorted = this._rows;
+        
+        var sorted = this._rows.filter(item => item[column]);
         sorted.sort(function (a, b) {
-            return Date(a[columnToSort]).getTime() - Date(b[columnToSort]).getTime()
+            return new Date(a[columnToSort]).getTime() - new Date(b[columnToSort]).getTime()
         });
         return sorted;
     }
